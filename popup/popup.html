@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other-Perspectives</title>
+    <style>
+
+        body{
+
+            width: 300px;
+        }
+
+        #button-container {
+
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #console{
+
+            overflow-y: scroll;
+            width: 300px;
+            height: 150px;
+            padding: 20px;
+        }
+
+        #progress-bar {
+
+            text-align: center;
+            color: white;
+            width:  0;
+            max-width: 100%;
+            height: 15px;
+            background-color: blue;
+            /*margin: auto;*/
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #progress-bar-container {
+
+            widtH: 240px;
+            height: 15px;
+            background-color: lightgray;
+            /*margin: auto;*/
+            margin-top: 20px;
+            position: relative;
+            left: 40px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id='button-container'>
+        <button id='download-csv'>Download CSV</button>
+        <button id='get-progress'>Progress Bar</button>
+        <button id='get-log'>Get Log</button>
+    </div>
+    <div id='progress-bar-container'>
+        <div id='progress-bar'></div>
+    </div>
+    <br>
+    <div id='console'></div>
+    <script src = './popup.js'></script>
+</body>
+</html>
