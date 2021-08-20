@@ -1,6 +1,6 @@
 # otherperspectives-extension
 
-Chrome extension that scrapes and downloads influencer data from otherperspectives.io, an influencer aggregator site.
+Chrome extension that scrapes and downloads influencer data from app.otherperspectives.io, an influencer aggregator site.
 
 ## Demo
 ---
