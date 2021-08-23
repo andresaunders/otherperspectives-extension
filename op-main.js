@@ -70,14 +70,13 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 			
 			return imagesPromise.then((returnedImages)=>{
 				retImages = returnedImages;
-				/*console.log('retImages: ', retImages);
-				console.log('retImages split: ', retImages.split(','));*/
+				
 				return getVideos(post); 
 				
 			}).then((returnedVideos)=>{
+				
 				retVideos = returnedVideos;
-			/*console.log('retVideos: ', retVideos);
-				console.log('retVideos split: ', retVideos.split(','));*/
+				
 				return getText(post);
 			}).
 			then((returnedText)=>{
@@ -89,34 +88,42 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 		// GET POST DATA
 	
 		function numText(text){
-		let num = 0, regex = /\d+/;
-		if(text.includes('.')){
-			regex = /\d+.\d+/; 
-		}
-		
-		if(text.includes(',')){
-			text = format(text); //text.replace(/,/g, '');
-		}
-		
-		if(text.match(regex)) {
-			num = parseFloat(text.match(regex)[0]);
-			if(text.includes('K')){
-			num *= 1000;
-			}
-			else if(text.includes('M')){
-				num *= 1000000;
-			}
 			
-		}
-		return num;
+			let num = 0, regex = /\d+/;
+
+			if(text.includes('.')){
+
+				regex = /\d+.\d+/; 
+			}
+
+			if(text.includes(',')){
+
+				text = format(text); 
+			}
+
+			if(text.match(regex)) {
+
+				num = parseFloat(text.match(regex)[0]);
+
+				if(text.includes('K')){
+
+					num *= 1000;
+				}
+				else if(text.includes('M')){
+
+					num *= 1000000;
+				}
+			}
+			return num;
 		
 		}
 	
 		function format(str){
-			str = str.replace(/,/g, '');
-			str = str.replace(/\n/g, ' '); 
 			
-			//let regex = new RegExp(`[${chars}]`,'g')
+			str = str.replace(/,/g, '');
+			
+			str = str.replace(/\n/g, ' '); 
+		
 			return str;
 		}
 	
@@ -125,13 +132,15 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 			console.log('postSource');
 	
 			if(post.querySelector('a').href.includes('facebook')){
+				
 				return 'fb';
 			}
 			else if(post.querySelector('a').href.includes('instagram')){
+				
 				return 'ig';
 			}
-			return 'unknown';
 			
+			return 'unknown';
 		}
 	
 		function getMetric(post, class_selector){
@@ -180,7 +189,7 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 			
 			date = match[1];
 			
-			return format(date); //date.replace(/,/g, '');
+			return format(date); 
 		}
 	
 	
@@ -323,14 +332,13 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 	
 			let videos;
 		
-			// DEBUG console.log('getVideos post value: ', post);
 			videos = Array.from(post.querySelectorAll('video source')).map(x => x.src);
 	
 			if(videos.length == 0){
 	
 				return 'videos: n/a';
 			}
-			// DEBUG console.log('numVideos: ', videos.length);
+			
 			videos = combineURLS(videos, 'video');
 			
 			return videos;
@@ -503,6 +511,7 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 	
 		//SCROLL PAGE TO LAST POST ELEMENT UNTIL NO MORE POSTS ON PAGE
 		function scrollToEnd(){
+			
 			//get last post on page, and bring into view
 			let infinite = true;
 
@@ -565,7 +574,7 @@ if(!document.getElementById('otherperspectives-extension-marker')){
 	
 		/*
 
-		Functionality
+		Function Call Order
 	
 		downloadOnClick
 			scrollToEnd ->
