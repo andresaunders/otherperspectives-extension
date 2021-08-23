@@ -3,8 +3,6 @@
 
     if(change_info.status == 'complete' && tab.url.startsWith('http')){
 
-        console.log('current url: ', tab.url)
-
         if(tab.url.includes('app.otherperspectives.io')){
 
             chrome.scripting.executeScript({
@@ -13,8 +11,6 @@
 
                 files: ['./op-main.js']
             })
-
-            console.log('injected script')
         }
     }    
 
